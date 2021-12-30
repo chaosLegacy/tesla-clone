@@ -61,6 +61,7 @@
 
 .downArrow {
     overflow: hidden;
+    text-align: center;
 }
 
 .downArrow img {

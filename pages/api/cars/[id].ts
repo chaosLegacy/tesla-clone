@@ -1,7 +1,7 @@
-import { carsType } from './index';
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import * as carsList from '../carsData.json';
+import { carsType } from '.';
+import carsList from '../carsData.json';
 
 
 export default function handler(

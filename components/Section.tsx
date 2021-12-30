@@ -2,14 +2,13 @@ import React from 'react'
 import { sectionsType } from '../pages/api/sections';
 import styles from './Section.module.css';
 import { Fade } from "react-awesome-reveal";
-import Meta from './Meta';
+import Image from 'next/image';
+import downArrow from '../public/down-arrow.svg';
 
 const Section = (car: sectionsType) => {
     const { id, title, description, image, primaryBtnText, secondaryBtnText, range, time, topSpeed, peakPower } = car;
-    const [activeSection, setActiveSession] = React.useState<HTMLElement | null>();
     const scrollToElement = (id: string) => {
         const section = document.getElementById(id);
-        setActiveSession(section);
         section && section.scrollIntoView({ behavior: 'smooth' });
     };
     React.useEffect(() => {
@@ -21,11 +20,8 @@ const Section = (car: sectionsType) => {
         console.log('scroll event', window.scrollY)
     }
 
-    const keywords = [range, time, topSpeed, peakPower];
     return (
         <>
-            {/* <Meta title={title} description={description} keywords={keywords.join(' ')} /> */}
-
             <section style={{ backgroundImage: `url(/images/${image})` }}
                 className={styles.wrap} id={`section-${id}`}>
                 <section className={styles.main}>
