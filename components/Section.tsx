@@ -1,24 +1,14 @@
 import React from 'react'
-import { sectionsType } from '../pages/api/sections';
 import styles from './Section.module.css';
 import { Fade } from "react-awesome-reveal";
-import Image from 'next/image';
-import downArrow from '../public/down-arrow.svg';
+import { sectionsType } from '../type';
 
 const Section = (car: sectionsType) => {
-    const { id, title, description, image, primaryBtnText, secondaryBtnText, range, time, topSpeed, peakPower } = car;
+    const { id, title, description, image, primaryBtnText, secondaryBtnText } = car;
     const scrollToElement = (id: string) => {
         const section = document.getElementById(id);
         section && section.scrollIntoView({ behavior: 'smooth' });
     };
-    React.useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    });
-
-    const handleScroll = () => {
-        console.log('scroll event', window.scrollY)
-    }
 
     return (
         <>

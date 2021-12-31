@@ -1,11 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
+import { MetaProps } from '../type'
 
-type MetaProps = {
-    title: string;
-    keywords: string;
-    description: string;
-}
+
 const Meta = ({ title, keywords, description }: MetaProps) => {
     return (
         <Head>

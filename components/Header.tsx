@@ -1,12 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { carsType } from '../pages/api/cars';
+import { carsType } from '../type';
 import styles from './Header.module.css';
 import Meta from './Meta';
-import teslaLogo from '../public/logo.svg';
-import menuIcon from '../public/menu.svg';
-import closeIcon from '../public/close.svg';
 
 const Header = ({ cars }: { cars: Array<carsType> }) => {
     const [click, setClick] = useState(false);
