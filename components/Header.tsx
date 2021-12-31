@@ -6,7 +6,10 @@ import Meta from './Meta';
 
 const Header = ({ cars }: { cars: Array<carsType> }) => {
     const [click, setClick] = useState(false);
-    const handleClick = () => setClick(!click);
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        setClick(!click)
+    };
 
     const scrollToElement = (
         e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -33,8 +36,11 @@ const Header = ({ cars }: { cars: Array<carsType> }) => {
                     }
                 </section>
                 <section className={styles.rightMenu}>
-                    <a href="#">Shop</a>
-                    <a href="#">Tesla Account</a>
+                    <div className={styles.leftMenu}>
+                        <a href="#">Shop</a>
+                        <a href="#">Tesla Account</a>
+                    </div>
+
                     <a href="#" onClick={handleClick}>
                         <img src={click ? '/close.svg' : '/menu.svg'} alt="menu" width={22} />
                     </a>
@@ -43,10 +49,13 @@ const Header = ({ cars }: { cars: Array<carsType> }) => {
                             onClick={handleClick}>
                             <img src="/close.svg" alt="menu" width={28} />
                         </a>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Tesla Account</a></li>
                         {
                             cars.map((car, index) => (
                                 <li key={index}>
-                                    <a href="#" onClick={(e) => scrollToElement(e, `section-${index + 1}`)}>{car}</a>
+                                    <a href="#"
+                                        onClick={(e) => { scrollToElement(e, `section-${index + 1}`); handleClick(e) }}>{car}</a>
                                 </li>
                             ))
                         }
